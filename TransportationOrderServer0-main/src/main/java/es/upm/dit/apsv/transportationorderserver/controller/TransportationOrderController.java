@@ -46,8 +46,8 @@ public class TransportationOrderController {
   @PutMapping("/transportationorders")
   ResponseEntity<TransportationOrder> update(@RequestBody TransportationOrder updatedOrder) {
     TransportationOrder to = repository.save(updatedOrder);
-    if (to == null)
-      return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+    // if (to == null)
+    // return new ResponseEntity<>(HttpStatus.NOT_FOUND);
     return new ResponseEntity<>(to, HttpStatus.OK);
   }
 
