@@ -16,6 +16,7 @@
 
 package es.upm.dit.apsv.transportationorderserver;
 
+import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 import static org.hamcrest.Matchers.*;
 import java.io.BufferedReader;
@@ -58,9 +59,11 @@ public class TransportationOrderControllerTest {
 
     // call GET "/transportationorders" application/json
     when(repository.findAll()).thenReturn(getAllTestOrders());
+
     RequestBuilder request = MockMvcRequestBuilders
         .get("/transportationorders")
         .accept(MediaType.APPLICATION_JSON);
+
     MvcResult result = mockMvc.perform(request)
         .andExpect(status().isOk())
         .andExpect(jsonPath("$", hasSize(20)))
